@@ -1,0 +1,58 @@
+// ألوان التنبيهات
+$borderColor-danger: rgba(255, 25, 0, 0.322);
+$bgColor-danger: rgba(255, 0, 0, 0.208);
+$fontColor-danger: rgb(255, 164, 164);
+
+$borderColor-success: rgba(25, 255, 0, 0.322);
+$bgColor-success: rgba(0, 255, 0, 0.208);
+$fontColor-success: rgb(164, 255, 164);
+
+$borderColor-info: rgba(0, 25, 255, 0.322);
+$bgColor-info: rgba(0, 0, 255, 0.208);
+$fontColor-info: rgb(164, 164, 255);
+
+$borderColor-wrong: rgba(255, 165, 0, 0.322);
+$bgColor-wrong: rgba(255, 140, 0, 0.208);
+$fontColor-wrong: rgb(255, 200, 164);
+
+// @mixin لتعريف الستايل العام للتنبيهات
+@mixin alert($name, $borderColor, $bgColor, $fontColor) {
+  .#{$name} {
+    border: 1px solid $borderColor;
+    background-color: $bgColor;
+    padding: 1.3rem;
+    border-radius: 0.8rem;
+    color: $fontColor;
+    .flex-alert {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .alert-title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      h4 {
+        padding: 0;
+        margin: 0;
+      }
+    }
+    p {
+      margin-bottom: 0;
+      margin-top: 1.2rem;
+      font-weight: 500;
+      line-height: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .close {
+      cursor: pointer;
+    }
+  }
+}
+
+// استدعاء التنبيهات بأنواع مختلفة
+@include alert("alert-danger", $borderColor-danger, $bgColor-danger, $fontColor-danger);
+@include alert("alert-success", $borderColor-success, $bgColor-success, $fontColor-success);
+@include alert("alert-info", $borderColor-info, $bgColor-info, $fontColor-info);
+@include alert("alert-wrong", $borderColor-wrong, $bgColor-wrong, $fontColor-wrong);
